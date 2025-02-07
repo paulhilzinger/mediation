@@ -1,0 +1,54 @@
+-- MZMOB-367 - SQL Script to create partitions on CDR_OUTPUT_KENAN_GPRS
+--
+
+-- Rename table to keep a copy of existing data
+--
+RENAME CDR_OUTPUT_KENAN_GPRS TO CDR_OUTPUT_KENAN_GPRS_OLD;
+
+
+-- Create the new partitioned table
+--
+CREATE TABLE CDR_OUTPUT_KENAN_GPRS
+(
+  TRANSACTION_ID       NUMBER                   NOT NULL,
+  CREATED_DATE         DATE                     DEFAULT sysdate               NOT NULL,
+  INPUT_FILENAME       VARCHAR2(100 BYTE),
+  RECORD_TYPE          VARCHAR2(10 BYTE),
+  TYPE_ID_USG          VARCHAR2(10 BYTE),
+  TRANS_DT             VARCHAR2(20 BYTE),
+  POINT_ORIGIN         VARCHAR2(30 BYTE),
+  PRIMARY_UNITS        VARCHAR2(30 BYTE),
+  PROVIDER_ID          VARCHAR2(10 BYTE),
+  EXT_TRACKING_ID      VARCHAR2(40 BYTE),
+  AMOUNT               VARCHAR2(20 BYTE),
+  UNITS_CURRENCY_CODE  VARCHAR2(10 BYTE),
+  VISIT_COUNTRY_CODE   VARCHAR2(60 BYTE),
+  OCS_CHARGE_CODE_ID   VARCHAR2(30 BYTE),
+  EXTERNAL_ID          VARCHAR2(80 BYTE),
+  EXTERNAL_ID_TYPE     VARCHAR2(10 BYTE),
+  CUSTOMER_TAG         VARCHAR2(30 BYTE)
+) SEGMENT CREATION IMMEDIATE
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 NOCOMPRESS LOGGING
+partition by range(CREATED_DATE)
+(
+  PARTITION PMAXVALUE  VALUES LESS THAN (MAXVALUE) TABLESPACE  MZ_MOB_CDR_DATA);
+
+
+-- Drop the existing index on point_origin
+--
+DROP INDEX CDR_OUTPUT_KENAN_GPRS_IDX1;
+
+
+-- Insert 31 days of data from the old table to the new table
+--
+INSERT /*+ append */ INTO CDR_OUTPUT_KENAN_GPRS (SELECT * FROM CDR_OUTPUT_KENAN_GPRS_OLD WHERE CREATED_DATE >= SYSDATE - 31);
+
+
+-- Recreate the index on the partitioned table but using input_filename rather than point_origin
+--
+CREATE INDEX CDR_OUTPUT_KENAN_GPRS_IDX1 ON CDR_OUTPUT_KENAN_GPRS (INPUT_FILENAME) LOCAL;
+
+
+-- Create partition local index on created_date
+--
+CREATE INDEX CDR_OUTPUT_KENAN_GPRS_IDX2 ON CDR_OUTPUT_KENAN_GPRS (CREATED_DATE) LOCAL;

@@ -1,0 +1,3 @@
+INSERT INTO MZ_FILTER_REASONS VALUES (20, 'Not Required For IBS Zero Duration Call');
+
+INSERT INTO MZ_FILTER_REASONS VALUES (21, 'Event Record');

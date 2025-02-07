@@ -1,0 +1,6 @@
+-- Add record ID field to ECS Output
+--
+ALTER TABLE CDR_OUTPUT_BW_ECS
+ADD(
+RECORD_ID VARCHAR(100)
+	);

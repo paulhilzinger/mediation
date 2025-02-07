@@ -1,0 +1,11 @@
+-- MED-514. Mediation GCP work - GCP Data Migration for Fixed Line
+--
+CREATE SEQUENCE GCP_FL_OUTPUT_SEQ
+  MINVALUE 1 
+  MAXVALUE 999999 
+  INCREMENT BY 1 
+  START WITH 1 
+  NOCACHE  
+  NOORDER  
+CYCLE;
+  

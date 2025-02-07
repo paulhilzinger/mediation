@@ -1,0 +1,223 @@
+-- Create two new tables for TUK
+--
+CREATE TABLE CDR_INPUT_TUK_RAW
+(
+   CREATED_DATE date DEFAULT SYSDATE  NOT NULL,
+   TRANSACTION_ID decimal(15) NOT NULL,
+   CALLING_NUMBER varchar2(30),
+   CALLED_NUMBER varchar2(30),
+   TAG varchar2(20),
+   CALLING_LINE_IDENTITY varchar2(30),
+   EVENT_TYPE varchar2(20),
+   DATE_AND_TIME_FIELDS varchar2(20),
+   SPID varchar2(15),
+   PBX_SUFFIX varchar2(20),
+   DURATION_OF_CALL varchar2(40),
+   RERATE_INDICATOR varchar2(20),
+   ACCOUNT_NUMBER varchar2(20),
+   RECORD_STATUS varchar2(20),
+   WHOLESALE_PRICE varchar2(20),
+   PHONEBOOK_CODE varchar2(100),
+   SERVICE_TYPE varchar2(20),
+   PPNQ varchar2(20),
+   REVERSE_CHARGE varchar2(20),
+   DATETIME_RECEIVED_MSG varchar2(30),
+   DIRECTION_TYPE_SMS varchar2(20),
+   DESTINATION_CODE varchar2(20),
+   MESSAGE_SIZE varchar2(20),
+   MESSAGE_TYPE varchar2(20),
+   TARIFF varchar2(20),
+   DUR_INCOMING_FIXED_LINE varchar2(20),
+   CHARGEBAND varchar2(20),
+   PROPORTION_TEXT varchar2(20),
+   CALLSERVER_ID varchar2(20)
+)
+TABLESPACE MZ_CDR_DATA
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING
+PARTITION BY RANGE (CREATED_DATE)
+(  
+  PARTITION PMAXVALUE VALUES LESS THAN (MAXVALUE)
+    LOGGING
+    COMPRESS 
+    TABLESPACE MZ_CDR_DATA
+    PCTFREE    0
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+               )
+)
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING
+ENABLE ROW MOVEMENT;
+
+
+CREATE INDEX CDR_INPUT_TUK_RAW_IDX1 ON CDR_INPUT_TUK_RAW(CALLING_NUMBER)
+LOCAL (  
+PARTITION PMAXVALUE
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MZ_CDR_DATA
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+               )
+)
+NOPARALLEL;
+
+CREATE INDEX CDR_INPUT_TUK_RAW_IDX2 ON CDR_INPUT_TUK_RAW(CALLED_NUMBER)
+LOCAL (  
+PARTITION PMAXVALUE
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MZ_CDR_DATA
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+               )
+)
+NOPARALLEL;
+
+CREATE TABLE CDR_INPUT_TUK_RATED
+(
+   CREATED_DATE date DEFAULT SYSDATE  NOT NULL,
+   TRANSACTION_ID decimal(15) NOT NULL,
+   CALLING_NUMBER varchar2(30),
+   CALLED_NUMBER varchar2(30),
+   TAG varchar2(20),
+   CALLING_LINE_IDENTITY varchar2(30),
+   EVENT_TYPE varchar2(20),
+   DATE_AND_TIME_FIELDS varchar2(20),
+   SPID varchar2(15),
+   PBX_SUFFIX varchar2(20),
+   DURATION_OF_CALL varchar2(40),
+   RERATE_INDICATOR varchar2(20),
+   ACCOUNT_NUMBER varchar2(20),
+   RECORD_STATUS varchar2(20),
+   WHOLESALE_PRICE varchar2(20),
+   PHONEBOOK_CODE varchar2(100),
+   SERVICE_TYPE varchar2(20),
+   PPNQ varchar2(20),
+   REVERSE_CHARGE varchar2(20),
+   DATETIME_RECEIVED_MSG varchar2(30),
+   DIRECTION_TYPE_SMS varchar2(20),
+   DESTINATION_CODE varchar2(20),
+   MESSAGE_SIZE varchar2(20),
+   MESSAGE_TYPE varchar2(20),
+   TARIFF varchar2(20),
+   DUR_INCOMING_FIXED_LINE varchar2(20),
+   CHARGEBAND varchar2(20),
+   PROPORTION_TEXT varchar2(20),
+   CALLSERVER_ID varchar2(20),
+   FILE_SEQ_ID varchar2(10),
+   LINE_NUM varchar2(15),
+   CUK_ACCOUNT_NUMBER varchar2(20),
+   EVENT_SEQUENCE varchar2(10),
+   EVENT_COST varchar2(20),
+   CUK_TARIFF varchar2(10),
+   PRE_DISCOUNT_COST varchar2(20),
+   HIGHEST_PRIORITY_DISCOUNT varchar2(10),
+   TIME_RATE varchar2(40),
+   RATING_TARIFF_NAME varchar2(40),
+   BILLING_TARIFF_NAME varchar2(40),
+   DISPATCH_CURRENCY_CODE varchar2(5),
+   COST_BAND_NAME varchar2(40)
+)
+TABLESPACE MZ_CDR_DATA
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING
+PARTITION BY RANGE (CREATED_DATE)
+(  
+  PARTITION PMAXVALUE VALUES LESS THAN (MAXVALUE)
+    LOGGING
+    COMPRESS 
+    TABLESPACE MZ_CDR_DATA
+    PCTFREE    0
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+               )
+)
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING
+ENABLE ROW MOVEMENT;
+
+CREATE INDEX CDR_INPUT_TUK_RATED_IDX1 ON CDR_INPUT_TUK_RATED(CALLING_NUMBER)
+LOCAL (  
+PARTITION PMAXVALUE
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MZ_CDR_DATA
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+               )
+)
+NOPARALLEL;
+
+CREATE INDEX CDR_INPUT_TUK_RATED_IDX2 ON CDR_INPUT_TUK_RATED(CALLED_NUMBER)
+LOCAL (  
+PARTITION PMAXVALUE
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MZ_CDR_DATA
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+               )
+)
+NOPARALLEL;

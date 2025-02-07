@@ -1,0 +1,6 @@
+-- Modify BW Input C_NUMBER length 
+--
+ALTER TABLE CDR_INPUT_BW
+MODIFY(
+C_NUMBER VARCHAR2(161)
+);

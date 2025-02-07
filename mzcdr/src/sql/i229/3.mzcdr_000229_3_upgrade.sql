@@ -1,0 +1,14 @@
+-- MED-592.[ROI N-IMS] - All issues and observations related to ROI Nokia IMS. Issue 49: Sky Data Sequence number 
+-- Create Nokia IMS BI Output Sequences
+--
+--DROP SEQUENCE MZ_CDR_OWNER.IMS_NOKIA_ROI_BI_NTAS_FULL_OUTPUT_SEQ;
+
+CREATE SEQUENCE IMS_NOKIA_ROI_BI_FULL_OUTPUT_SEQ
+  MINVALUE 1 
+  MAXVALUE 99999
+  INCREMENT BY 1 
+  START WITH 1 
+  NOCACHE  
+  NOORDER  
+  NOCYCLE;
+  

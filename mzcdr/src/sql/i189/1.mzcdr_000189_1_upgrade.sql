@@ -1,0 +1,28 @@
+-- Create a new business unit for Sky Mobile
+--
+INSERT INTO BUSINESS_UNITS VALUES (12, 'SKYTMO');
+
+
+-- Create a new business unit for Sky Retail fixed line shop usage
+--
+INSERT INTO BUSINESS_UNITS VALUES (13, 'SKYRTL');
+
+
+
+-- MED-211 Datafix
+--
+INSERT INTO DN_FREEPHONE_PREFIX_CODES ( FREEPHONE_PREFIX_CODE,
+FREEPHONE_PREFIX_DESC ) VALUES ( 
+'116006', 'Helpline for victims of crime'); 
+
+INSERT INTO DN_FREEPHONE_PREFIX_CODES ( FREEPHONE_PREFIX_CODE,
+FREEPHONE_PREFIX_DESC ) VALUES ( 
+'116117', 'Non-emergency medical on-call service'); 
+
+INSERT INTO DN_FREEPHONE_PREFIX_CODES ( FREEPHONE_PREFIX_CODE,
+FREEPHONE_PREFIX_DESC ) VALUES ( 
+'00800', 'International Freephone prefix');
+
+INSERT INTO DN_FREEPHONE_PREFIX_CODES ( FREEPHONE_PREFIX_CODE,
+FREEPHONE_PREFIX_DESC ) VALUES ( 
+'105', 'Electricity Helpline');

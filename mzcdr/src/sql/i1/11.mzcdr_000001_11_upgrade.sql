@@ -1,0 +1,94 @@
+DROP TABLE MZ_FILTER_REASONS;
+  
+CREATE TABLE MZ_FILTER_REASONS 
+   (	FILTER_REASON_ID NUMBER, 
+	   DESCRIPTION VARCHAR2(100 BYTE)
+   );
+  
+-- INSERTING into MZ_FILTER_REASONS
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (1,'Call duration not a number.');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (2,'Event type not correct.');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (3,'Carrier Cost not a number.');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (4,'Invalid record status');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (0,'No filtering.');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (24,'Undecodable batch');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (26,'Re-introduced Segmented CDRs');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (25,'Segmented CDRs');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (27,'Long Duration Calls');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (5,'Re-rated call');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (7,'Out of date call');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (8,'Incomplete Thus session');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (14,'The Calling Line Identity is empty');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (15,'The Called Number is empty.');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (18,'Session Timed Out.');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (16,'Message Size is null (zero).');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (17,'Invalid Time gap in session.');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (19,'Summary filter file.');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (6,'Duplicate CDR');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (9,'Invalid Date field.');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (10,'Invalid SPID field.');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (11,'Invalid Facility Description field');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (12,'Invalid PPNQ field.');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (13,'Bad Operator Description field.');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (20,'Invalid Re-rate Indicator');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (22,'Output filtering rules');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (21,'Proportion text not a int');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (23,'Event type 326');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (28,'Record type 327 - cannot derive usage_type');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (29,'Record type 312. Cannot derive usage_type');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (30,'Record type 313. Cannot derive usage_type');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (31,'Duplicate Batch');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (33,'Tariff File');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (32,'Fraud File');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (34,'Invalid Link field');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (35,'Ineffective Call');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (38,'EC0809_Unknown_BU');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (37,'On-Net call');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (36,'Invalid UDR');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (39,'NANP Structure');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (42,'Zero Duration Call');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (40,'Not Interconnect Billable');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (41,'Not SkyTalk Originated');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (44,'EC0805_Incomplete_UDR');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (43,'EC0810_CUPID_NotFound');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (45,'Segment of a Long Call');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (46,'EC0808_LongCall_UDR');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (47,'Arbor Off-Hook');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (48,'IBS Off-Hook');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (49,'Filtered Freephone Number 0800');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (50,'Filtered Freephone Number 100');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (51,'Filtered Freephone Number 0500');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (52,'Filtered Freephone Number 0808');
+Insert into MZ_FILTER_REASONS (FILTER_REASON_ID,DESCRIPTION) values (53,'Filtered Freephone Number Other');
+
+DROP SEQUENCE FRAUD_OUTPUT_SEQ;
+
+CREATE SEQUENCE FRAUD_OUTPUT_SEQ
+  MINVALUE 1 
+  MAXVALUE 999999999999999999999999999 
+  INCREMENT BY 1 
+  START WITH 1 
+  NOCACHE  
+  NOORDER  
+  NOCYCLE;
+
+UPDATE MZ_CONFIGURATION SET PARAMETER_VALUE=1 WHERE PARAMETER='CS2K_DUP_CHECK';
+UPDATE MZ_CONFIGURATION SET PARAMETER_VALUE=1800000000 WHERE PARAMETER='CS2K_LONG_DUR_CALL_LIMIT';
+
+CREATE INDEX IDX_C_CALLED_NUMBER ON CDR_INPUT_CS2K
+(CALLED_NUMBER)
+  LOCAL (  
+  PARTITION I_CS2K_MAXVALUE
+    LOGGING
+    NOCOMPRESS
+)
+NOPARALLEL;
+
+CREATE INDEX IDX_C_CALLING_NUMBER ON CDR_INPUT_CS2K
+(CALLING_NUMBER)
+  LOCAL (  
+  PARTITION I_CS2K_MAXVALUE
+    LOGGING
+    NOCOMPRESS
+)
+NOPARALLEL;

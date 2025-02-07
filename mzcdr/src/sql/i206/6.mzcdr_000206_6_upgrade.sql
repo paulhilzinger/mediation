@@ -1,0 +1,14 @@
+-- Modify BW ECS output column lengths 
+--
+ALTER TABLE CDR_OUTPUT_BW_ECS
+MODIFY(
+CDR_START_TIME VARCHAR2(18),
+CDR_DATE VARCHAR2(19)
+	);
+
+-- Add filename to input BW table
+--
+ALTER TABLE CDR_INPUT_BW
+ADD(
+INPUT_FILENAME VARCHAR2(200)
+	);

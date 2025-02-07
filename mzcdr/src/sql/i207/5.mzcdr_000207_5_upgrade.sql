@@ -1,0 +1,7 @@
+-- Add delivery start/end fractions to input Nokia IMS table
+--
+ALTER TABLE CDR_INPUT_IMS_NOKIA
+ADD(
+DELIVERY_START_FRACTION NUMBER,
+DELIVERY_END_FRACTION NUMBER
+	);

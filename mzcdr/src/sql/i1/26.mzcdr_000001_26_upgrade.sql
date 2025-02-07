@@ -1,0 +1,25 @@
+-- Add the load table required by the procedure MZ_CDR_OWNER.DN_RANGE_HOLDERS_UPDATE to update DN_RANGE_HOLDERS
+--
+CREATE TABLE MZ_CDR_OWNER.DN_RANGE_HOLDERS_LOAD
+(
+  RANGE_START  VARCHAR2(20 BYTE)                NOT NULL,
+  RANGE_END    VARCHAR2(20 BYTE)                NOT NULL,
+  CUPID        VARCHAR2(5 BYTE)                 NOT NULL
+)
+TABLESPACE MZ_CDR_DATA
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;

@@ -1,0 +1,11 @@
+-- Add a column to the CDR_INPUT_IMS table for OPTIONAL_NUMBER - MZMOB-334
+--
+ALTER TABLE CDR_INPUT_IMS
+  ADD OPTIONAL_NUMBER VARCHAR2(40);
+
+
+-- Add columns to the CDR_INPUT_MMSC table for extended CDR fields - MZMOB-315
+--
+ALTER TABLE CDR_INPUT_MMSC
+  ADD MCC_MNC VARCHAR2(260);
+  

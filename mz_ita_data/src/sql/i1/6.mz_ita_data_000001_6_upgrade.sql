@@ -1,0 +1,1 @@
+INSERT INTO MZ_FILTER_REASONS VALUES (19, 'Not Required For IBS Not External');

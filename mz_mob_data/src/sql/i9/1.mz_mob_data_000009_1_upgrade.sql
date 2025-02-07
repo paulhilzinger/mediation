@@ -1,0 +1,4 @@
+-- MZMOB-215 - Add a timezone offset column to the CDR_INPUT_IMS table
+--
+ALTER TABLE CDR_INPUT_IMS
+  ADD DELIVERY_START_TZ_OFFSET VARCHAR2(10);

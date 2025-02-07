@@ -1,0 +1,10 @@
+-- MZITA-126 - ICID maximum length is 256 in SMC output but 128 in CDR_INPUT_IMS DB
+--
+
+ALTER TABLE CDR_INPUT_IMS
+MODIFY
+(
+  IMS_CHARGING_ID    VARCHAR2(256) 
+ );
+
+

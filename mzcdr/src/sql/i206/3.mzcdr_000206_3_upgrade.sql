@@ -1,0 +1,6 @@
+-- Add duration field
+--
+ALTER TABLE CDR_INPUT_BW
+ADD(
+DURATION NUMBER
+	);
