@@ -3,8 +3,7 @@
 create user mz_cdr_owner identified by mz_cdr
 default tablespace mz_cdr_data
 temporary tablespace temp
-quota unlimited on mz_cdr_data
-quota unlimited on I_WLR3_MAXVALUE;
+quota unlimited on mz_cdr_data;
 
 grant create table to mz_cdr_owner;
 grant create trigger to mz_cdr_owner;
