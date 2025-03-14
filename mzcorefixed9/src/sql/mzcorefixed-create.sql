@@ -16,9 +16,9 @@ grant drop any synonym to mz_fixed_owner;
 -- mz_fixed_admin
 
 create user mz_fixed_admin identified by mz_fixed
-default tablespace mz_data
+default tablespace mz_fixed_data
 temporary tablespace temp
-quota 0 on mz_data;
+quota 0 on mz_fixed_data;
 
 -- create mz_fixed specific role
 create role mzrole;
