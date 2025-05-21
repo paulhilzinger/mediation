@@ -1,38 +1,42 @@
--- mz_mob_owner
+-- =========================
+-- Create user: mz_mob_owner
+-- =========================
+CREATE USER mz_mob_owner IDENTIFIED BY mz_mob
+  DEFAULT TABLESPACE mz_mob_data
+  TEMPORARY TABLESPACE temp
+  QUOTA UNLIMITED ON mz_mob_data;
 
-create user mz_mob_owner identified by mz_mob
-default tablespace mz_mob_data
-temporary tablespace temp
-quota unlimited on mz_mob_data;
+-- Grant necessary privileges to mz_mob_owner
+GRANT CREATE SESSION TO mz_mob_owner;
+GRANT CREATE TABLE TO mz_mob_owner;
+GRANT CREATE VIEW TO mz_mob_owner;
+GRANT CREATE SEQUENCE TO mz_mob_owner;
+GRANT CREATE TRIGGER TO mz_mob_owner;
+GRANT CREATE ANY SYNONYM TO mz_mob_owner;
+GRANT DROP ANY SYNONYM TO mz_mob_owner;
+GRANT CREATE PUBLIC SYNONYM TO mz_mob_owner;
+GRANT DROP PUBLIC SYNONYM TO mz_mob_owner;
 
-grant create table to mz_mob_owner;
-grant create view to mz_mob_owner;
-grant create sequence to mz_mob_owner;
-grant create trigger to mz_mob_owner;
-grant create session to mz_mob_owner;
-grant create any synonym to mz_mob_owner;
-grant drop any synonym to mz_mob_owner;
+-- ========================
+-- Create user: mz_mob_admin
+-- ========================
+CREATE USER mz_mob_admin IDENTIFIED BY mz_mob
+  DEFAULT TABLESPACE mz_mob_data
+  TEMPORARY TABLESPACE temp
+  QUOTA 0 ON mz_mob_data;
 
--- mz_mob_admin
+-- ========================
+-- Create custom role: mzrole
+-- ========================
+CREATE ROLE mzrole;
 
-create user mz_mob_admin identified by mz_mob
-default tablespace mz_mob_data
-temporary tablespace temp
-quota 0 on mz_mob_data;
+-- Grant privileges to mz_mob_admin
+GRANT CREATE SESSION TO mz_mob_admin;
+GRANT CREATE ANY SYNONYM TO mz_mob_admin;
+GRANT DROP ANY SYNONYM TO mz_mob_admin;
+GRANT CREATE PUBLIC SYNONYM TO mz_mob_admin;
+GRANT DROP PUBLIC SYNONYM TO mz_mob_admin;
 
--- create mz_mob specific role
-create role mzrole;
-
-grant create session to mz_mob_admin;
-grant create any synonym to mz_mob_admin;
-grant drop any synonym to mz_mob_admin;
-grant mzrole to mz_mob_admin;
-
---grant connect, resource, mzrole to mz_mob_admin;
-
-grant create public synonym to mz_mob_admin;
-grant create public synonym to mz_mob_owner;
-
-grant drop public synonym to mz_mob_admin;
-grant drop public synonym to mz_mob_owner;
-
+-- Assign roles to mz_mob_admin
+GRANT mzrole TO mz_mob_admin;
+GRANT CONNECT, RESOURCE TO mz_mob_admin;

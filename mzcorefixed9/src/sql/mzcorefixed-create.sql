@@ -1,38 +1,42 @@
--- mz_fixed_owner
+-- =========================
+-- Create user: mz_fixed_owner
+-- =========================
+CREATE USER mz_fixed_owner IDENTIFIED BY mz_fixed
+  DEFAULT TABLESPACE mz_fixed_data
+  TEMPORARY TABLESPACE temp
+  QUOTA UNLIMITED ON mz_fixed_data;
 
-create user mz_fixed_owner identified by mz_fixed
-default tablespace mz_fixed_data
-temporary tablespace temp
-quota unlimited on mz_fixed_data;
+-- Grant necessary privileges to mz_fixed_owner
+GRANT CREATE SESSION TO mz_fixed_owner;
+GRANT CREATE TABLE TO mz_fixed_owner;
+GRANT CREATE VIEW TO mz_fixed_owner;
+GRANT CREATE SEQUENCE TO mz_fixed_owner;
+GRANT CREATE TRIGGER TO mz_fixed_owner;
+GRANT CREATE ANY SYNONYM TO mz_fixed_owner;
+GRANT DROP ANY SYNONYM TO mz_fixed_owner;
+GRANT CREATE PUBLIC SYNONYM TO mz_fixed_owner;
+GRANT DROP PUBLIC SYNONYM TO mz_fixed_owner;
 
-grant create table to mz_fixed_owner;
-grant create view to mz_fixed_owner;
-grant create sequence to mz_fixed_owner;
-grant create trigger to mz_fixed_owner;
-grant create session to mz_fixed_owner;
-grant create any synonym to mz_fixed_owner;
-grant drop any synonym to mz_fixed_owner;
+-- ========================
+-- Create user: mz_fixed_admin
+-- ========================
+CREATE USER mz_fixed_admin IDENTIFIED BY mz_fixed
+  DEFAULT TABLESPACE mz_fixed_data
+  TEMPORARY TABLESPACE temp
+  QUOTA 0 ON mz_fixed_data;
 
--- mz_fixed_admin
+-- ========================
+-- Create custom role: mzrole
+-- ========================
+CREATE ROLE mzrole;
 
-create user mz_fixed_admin identified by mz_fixed
-default tablespace mz_fixed_data
-temporary tablespace temp
-quota 0 on mz_fixed_data;
+-- Grant privileges to mz_fixed_admin
+GRANT CREATE SESSION TO mz_fixed_admin;
+GRANT CREATE ANY SYNONYM TO mz_fixed_admin;
+GRANT DROP ANY SYNONYM TO mz_fixed_admin;
+GRANT CREATE PUBLIC SYNONYM TO mz_fixed_admin;
+GRANT DROP PUBLIC SYNONYM TO mz_fixed_admin;
 
--- create mz_fixed specific role
-create role mzrole;
-
-grant create session to mz_fixed_admin;
-grant create any synonym to mz_fixed_admin;
-grant drop any synonym to mz_fixed_admin;
-grant mzrole to mz_fixed_admin;
-
---grant connect, resource, mzrole to mz_fixed_admin;
-
-grant create public synonym to mz_fixed_admin;
-grant create public synonym to mz_fixed_owner;
-
-grant drop public synonym to mz_fixed_admin;
-grant drop public synonym to mz_fixed_owner;
-
+-- Assign roles to mz_fixed_admin
+GRANT mzrole TO mz_fixed_admin;
+GRANT CONNECT, RESOURCE TO mz_fixed_admin;
