@@ -16,6 +16,7 @@ GRANT CREATE ANY SYNONYM TO mz_mob_owner;
 GRANT DROP ANY SYNONYM TO mz_mob_owner;
 GRANT CREATE PUBLIC SYNONYM TO mz_mob_owner;
 GRANT DROP PUBLIC SYNONYM TO mz_mob_owner;
+GRANT SELECT_CATALOG_ROLE TO mz_mob_owner;
 
 -- ========================
 -- Create user: mz_mob_admin

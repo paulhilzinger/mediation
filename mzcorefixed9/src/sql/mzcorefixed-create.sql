@@ -16,6 +16,7 @@ GRANT CREATE ANY SYNONYM TO mz_fixed_owner;
 GRANT DROP ANY SYNONYM TO mz_fixed_owner;
 GRANT CREATE PUBLIC SYNONYM TO mz_fixed_owner;
 GRANT DROP PUBLIC SYNONYM TO mz_fixed_owner;
+GRANT SELECT_CATALOG_ROLE TO mz_fixed_owner;
 
 -- ========================
 -- Create user: mz_fixed_admin
