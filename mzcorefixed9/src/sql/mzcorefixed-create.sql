@@ -6,7 +6,11 @@ CREATE USER mz_fixed_owner IDENTIFIED BY mz_fixed
   TEMPORARY TABLESPACE temp
   QUOTA UNLIMITED ON mz_fixed_data;
 
--- Grant necessary privileges to mz_fixed_owner
+-- Grant necessary privileges to mz_mob_owner
+GRANT CONNECT, RESOURCE, UNLIMITED
+    TABLESPACE, EXP_FULL_DATABASE, IMP_FULL_DATABASE
+    TO mz_fixed_owner;
+	
 GRANT CREATE SESSION TO mz_fixed_owner;
 GRANT CREATE TABLE TO mz_fixed_owner;
 GRANT CREATE VIEW TO mz_fixed_owner;
