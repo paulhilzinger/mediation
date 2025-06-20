@@ -27,4 +27,4 @@ UNION ALL
           s_state as locussmstatus
   FROM mz_mob_data_owner.cdr_input_smsc_sinch s
  WHERE src_name in ('CEL_WSMS','CEL_WSMS_BACKUP','WSMS')
-   AND created_date > SYSDATE - (30 / 1440)
+   AND created_date > SYSDATE - (30 / 1440);
